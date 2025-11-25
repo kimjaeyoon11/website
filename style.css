@@ -1,0 +1,1253 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap");
+
+/* --- 오타니 테마 변수 (다저스 컨셉) --- */
+:root {
+  --ohtani-blue: #005a9c; /* Dodgers Blue */
+  --ohtani-blue-dark: #003366;
+  --ohtani-blue-glow: #1e90ff; /* Brighter for effects */
+  --accent-gold: #ffc72c;
+  --text-color: #ffffff;
+  --bg-color: #111112;
+  --dark-grey: #444444;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
+  text-decoration: none;
+  list-style: none;
+}
+
+body {
+  /* 더 풍부한 다저스 블루 톤의 배경 */
+  background: linear-gradient(135deg, #002f5f 0%, #0a1a2e 40%, #050a14 100%);
+  background-attachment: fixed;
+  color: var(--text-color);
+  overflow-x: hidden;
+  min-height: 100vh;
+  position: relative;
+}
+
+/* 배경 패턴 오버레이 */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(
+      circle at 20% 50%,
+      rgba(0, 90, 156, 0.15) 0%,
+      transparent 60%
+    ),
+    radial-gradient(
+      circle at 80% 20%,
+      rgba(30, 144, 255, 0.1) 0%,
+      transparent 50%
+    );
+  background-size: 100% 100%, 100% 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* --- Navigation (Lando Norris 스타일) --- */
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 2.5rem 2%;
+  z-index: 1000;
+  background: transparent;
+  pointer-events: none;
+}
+
+.nav-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  max-width: 100%;
+  margin: 0 auto;
+  position: relative;
+  pointer-events: auto;
+  width: 100%;
+}
+
+/* 왼쪽: SHOHEI OHTANI 텍스트 */
+.nav-name-link {
+  text-decoration: none;
+  transition: opacity 0.3s ease;
+}
+
+.nav-name-link:hover {
+  opacity: 0.7;
+}
+
+.nav-name {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  line-height: 1;
+}
+
+.nav-name-first,
+.nav-name-last {
+  font-family: "Montserrat", sans-serif;
+  font-size: 3rem;
+  font-weight: 800;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #ffffff;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+}
+
+.nav-name-first {
+  font-weight: 300;
+  opacity: 0.9;
+}
+
+.nav-name-last {
+  font-weight: 800;
+  margin-top: -8px;
+}
+
+/* 중앙: 다저스 로고 (큰 사이즈) */
+.nav-logo-link {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 0;
+  display: block; /* flex 제거 */
+  margin-left: 0; /* 마진 제거 */
+}
+
+.nav-logo-main {
+  height: 80px;
+  width: auto;
+  opacity: 1;
+  transition: all 0.3s ease;
+  filter: brightness(1.2) drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+}
+
+.nav-logo-link:hover .nav-logo-main {
+  transform: translateY(-3px);
+  filter: brightness(1.3) drop-shadow(0 6px 12px rgba(0, 90, 156, 0.5));
+}
+
+/* 오른쪽: 모던 햄버거 메뉴 */
+.nav-menu-box {
+  background: transparent;
+  border: none;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-left: auto; /* 오른쪽으로 밀기 */
+  flex-shrink: 0; /* 축소 방지 */
+}
+
+.nav-ham {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 40px;
+  height: 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  position: relative;
+  z-index: 1001;
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.nav-ham:hover {
+  transform: scale(1.1);
+}
+
+.nav-ham-line {
+  width: 100%;
+  height: 2px;
+  background-color: #ffffff;
+  transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  transform-origin: center;
+  border-radius: 2px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+/* 햄버거 메뉴 활성화 (X 애니메이션) */
+.nav-ham.active .nav-ham-line:nth-child(1) {
+  transform: translateY(11px) rotate(45deg);
+  background-color: var(--accent-gold);
+}
+
+.nav-ham.active .nav-ham-line:nth-child(2) {
+  opacity: 0;
+  transform: translateX(-20px);
+}
+
+.nav-ham.active .nav-ham-line:nth-child(3) {
+  transform: translateY(-11px) rotate(-45deg);
+  background-color: var(--accent-gold);
+}
+
+/* 호버 시 라인 색상 변경 효과 */
+.nav-ham:hover .nav-ham-line {
+  background-color: var(--ohtani-blue-glow);
+  box-shadow: 0 0 8px var(--ohtani-blue-glow);
+}
+
+.nav-ham.active:hover .nav-ham-line {
+  background-color: var(--accent-gold);
+  box-shadow: 0 0 8px var(--accent-gold);
+}
+
+/* 텍스트 호버 효과 */
+.nav-link-text,
+.nav-menu-link-text {
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+}
+
+.nav-link-text .char,
+.nav-menu-link-text .char {
+  display: inline-block;
+  transition: color 0.3s ease;
+}
+
+.nav-chapter-link:hover .nav-link-text,
+.nav-menu-link-w:hover .nav-menu-link-text {
+  color: var(--ohtani-blue);
+}
+
+/* 챕터 네비게이션 (오른쪽) - 숨김 처리 */
+.nav-chapter {
+  display: none; /* 일단 숨김 처리 */
+}
+
+/* 메뉴 오버레이 */
+.nav-menu-w {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 999;
+  pointer-events: none;
+  clip-path: ellipse(120% 0% at 50% 0%);
+  transition: clip-path 0.6s cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+.nav-menu-w.active {
+  pointer-events: all;
+  clip-path: ellipse(120% 120% at 50% 50%);
+}
+
+.nav-menu-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(17, 17, 18, 0.98);
+  backdrop-filter: blur(20px);
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+
+.nav-menu-w.active .nav-menu-bg {
+  opacity: 1;
+}
+
+.nav-menu-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.nav-menu-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
+}
+
+.nav-menu-links-w {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  text-align: center;
+}
+
+.nav-menu-link-w {
+  font-size: 3rem;
+  font-weight: 800;
+  color: var(--text-color);
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.3s ease;
+  text-decoration: none;
+  position: relative;
+  clip-path: inset(0 100% 0 0);
+}
+
+.nav-menu-w.active .nav-menu-link-w {
+  opacity: 1;
+  transform: translateY(0);
+  clip-path: inset(0 0 0 0);
+}
+
+.nav-menu-link-w:nth-child(1) {
+  transition-delay: 0.1s;
+}
+.nav-menu-link-w:nth-child(2) {
+  transition-delay: 0.15s;
+}
+.nav-menu-link-w:nth-child(3) {
+  transition-delay: 0.2s;
+}
+.nav-menu-link-w:nth-child(4) {
+  transition-delay: 0.25s;
+}
+.nav-menu-link-w:nth-child(5) {
+  transition-delay: 0.3s;
+}
+.nav-menu-link-w:nth-child(6) {
+  transition-delay: 0.35s;
+}
+
+.nav-menu-link-w:hover {
+  color: var(--accent-gold);
+}
+
+/* 메뉴 내 소셜 미디어 */
+.nav-menu-social {
+  display: flex;
+  gap: 2.5rem;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.nav-menu-social-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.nav-menu-social-link i {
+  font-size: 1.8rem;
+}
+
+.nav-menu-social-link:hover {
+  color: var(--accent-gold);
+  transform: translateY(-3px);
+}
+
+@media (max-width: 768px) {
+  .nav {
+    padding: 2rem 5%;
+  }
+
+  .nav-logo-main {
+    height: 60px;
+  }
+
+  .nav-name-first,
+  .nav-name-last {
+    font-size: 2rem;
+  }
+
+  .nav-menu-box {
+    padding: 0.6rem 0.8rem;
+  }
+
+  .nav-ham {
+    width: 24px;
+    height: 18px;
+  }
+
+  .nav-menu-link-w {
+    font-size: 2rem;
+  }
+
+  .nav-menu-social {
+    gap: 2rem;
+  }
+
+  .nav-menu-social-link {
+    font-size: 0.75rem;
+  }
+
+  .nav-menu-social-link i {
+    font-size: 1.5rem;
+  }
+}
+
+/* --- Hero Section (Video Background with Text Overlay) --- */
+.hero-section {
+  position: relative;
+  width: 100%;
+  height: 100vh; /* 초기 높이 */
+  overflow: hidden;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-background {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  transform-origin: center center;
+  will-change: transform;
+}
+
+.hero-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: grayscale(0%); /* 초기에는 컬러 */
+  will-change: filter, transform;
+  transition: filter 0.3s ease;
+}
+
+.hero-image-placeholder .placeholder-box {
+  min-height: 100vh;
+  height: 100%;
+  border-radius: 0;
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.4) 0%,
+    rgba(0, 0, 0, 0.75) 100%
+  );
+  pointer-events: none;
+  opacity: 1;
+  transition: opacity 0.4s ease;
+}
+
+.hero-text-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 20;
+  width: 100%;
+  max-width: 100vw;
+  text-align: center;
+  pointer-events: none;
+  will-change: opacity, transform;
+  overflow: visible;
+  padding: 0 5%;
+  box-sizing: border-box;
+}
+
+.hero-signature-wrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.8);
+  z-index: 15;
+  opacity: 0;
+  pointer-events: auto; /* 마우스 이벤트 활성화 */
+  will-change: opacity, transform;
+  transform-origin: center center;
+  /* 위치 고정을 위한 추가 스타일 */
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.hero-signature-svg {
+  max-width: 400px;
+  width: 100%;
+  height: auto;
+  /* 배경과 어울리는 색상 */
+  mix-blend-mode: screen;
+  filter: brightness(1.3) contrast(1.3)
+    drop-shadow(0 0 20px rgba(255, 199, 44, 0.5));
+}
+
+.hero-signature-svg path {
+  fill: none;
+  stroke: #ffffff;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  /* 초기에는 보이지 않음 (stroke-dasharray로 제어) */
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+}
+
+.hero-signature-img-source {
+  display: none;
+}
+
+.hero-signature-img-fallback {
+  max-width: 700px;
+  width: 100%;
+  height: auto;
+  mix-blend-mode: screen;
+  filter: brightness(1.3) contrast(1.3)
+    drop-shadow(0 0 20px rgba(34, 104, 235, 0.5));
+}
+
+/* Vanilla-Tilt 효과가 적용된 상태 */
+.hero-signature-wrapper.tilt-active {
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .hero-signature-img {
+    max-width: 250px;
+  }
+}
+
+.hero-main-text {
+  font-size: clamp(3rem, 12vw, 10rem);
+  font-weight: 400;
+  color: #f1f1f1;
+  letter-spacing: -0.02em;
+  line-height: 0.9;
+  text-transform: uppercase;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.1em;
+  margin: 0;
+  padding: 0 5%;
+  max-width: 100%;
+  overflow: visible;
+  word-break: keep-all;
+}
+
+.hero-main-text .char {
+  display: inline-block;
+  transition: color 0.3s ease;
+  cursor: default;
+}
+
+.hero-main-text .char:hover {
+  color: var(--accent-gold);
+}
+
+.hero-main-text .char.space {
+  width: 0.2em;
+}
+
+/* Hero Title 스타일 */
+.hero-title {
+  font-size: clamp(4rem, 15vw, 12rem);
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: -0.02em;
+  line-height: 0.9;
+  text-transform: uppercase;
+  margin: 0;
+  padding: 0;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  text-align: center;
+}
+
+/* 스크롤 인디케이터 */
+.hero-scroll-indicator {
+  position: absolute;
+  bottom: 4rem;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  z-index: 10;
+  color: var(--text-color);
+  font-size: 0.85rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+/* 하단 CTA 버튼 */
+.hero-cta {
+  position: absolute;
+  bottom: 2rem;
+  right: 5%;
+  z-index: 10;
+}
+
+.cta-button {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 1rem 2rem;
+  background: rgba(0, 90, 156, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+  color: var(--text-color);
+  font-size: 0.9rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.cta-button:hover {
+  background: rgba(0, 90, 156, 1);
+  border-color: var(--accent-gold);
+  transform: translateY(-2px);
+}
+
+.cta-icon {
+  font-size: 1.2rem;
+  font-weight: 300;
+  line-height: 1;
+}
+
+.cta-text {
+  font-weight: 600;
+}
+
+/* --- Hero Section (HOME) --- */
+.hero-section {
+  position: relative;
+  z-index: 1;
+}
+
+/* --- Chapter Sections (Charles Leclerc 스타일) --- */
+.chapter-section {
+  min-height: 100vh;
+  padding: 8rem 5% 6rem;
+  position: relative;
+  z-index: 1;
+  max-width: 1400px;
+  margin: 0 auto;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.chapter-section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.chapter-header {
+  margin-bottom: 4rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 2rem;
+}
+
+.chapter-number {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--accent-gold);
+  letter-spacing: 3px;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+}
+
+.chapter-title {
+  font-size: 4rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  color: var(--text-color);
+  line-height: 1.1;
+}
+
+.chapter-content {
+  display: block;
+  margin-bottom: 4rem;
+}
+
+.chapter-content.has-text {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.chapter-content.reverse {
+  grid-template-columns: 1fr 1fr;
+}
+
+.chapter-content.reverse .chapter-image-placeholder {
+  order: -1;
+}
+
+.chapter-text {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.chapter-intro {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 2rem;
+  color: var(--accent-gold);
+}
+
+.chapter-text p {
+  margin-bottom: 1.5rem;
+}
+
+/* --- 이미지 플레이스홀더 (흰색) --- */
+.placeholder-box {
+  width: 100%;
+  height: 100%;
+  min-height: 400px;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  position: relative;
+  overflow: hidden;
+}
+
+.placeholder-box.white-bg {
+  background: #ffffff;
+}
+
+.placeholder-box span {
+  color: #999999;
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.chapter-image-placeholder {
+  width: 100%;
+  height: 100%;
+}
+
+/* --- Stats Section --- */
+.stats-section {
+  margin-top: 4rem;
+  padding-top: 4rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+}
+
+.stat-item {
+  text-align: center;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.stat-label {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.7);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 1rem;
+}
+
+.stat-value {
+  font-size: 3rem;
+  font-weight: 800;
+  color: var(--accent-gold);
+}
+
+/* --- Achievements Section --- */
+.achievements-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  margin-top: 4rem;
+}
+
+.achievement-item {
+  padding: 3rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.achievement-item:hover {
+  transform: translateY(-5px);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.achievement-year {
+  font-size: 1rem;
+  color: var(--accent-gold);
+  font-weight: 600;
+  margin-bottom: 1rem;
+  letter-spacing: 2px;
+}
+
+.achievement-title {
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+}
+
+.achievement-desc {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.6;
+}
+
+/* --- Gallery Section --- */
+.gallery-section {
+  margin-top: 4rem;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+}
+
+.gallery-item {
+  width: 100%;
+  aspect-ratio: 4/3;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.gallery-item .placeholder-box {
+  min-height: 300px;
+  height: 100%;
+}
+
+/* --- Media Section --- */
+.media-section {
+  margin-top: 4rem;
+}
+
+.media-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.media-item {
+  width: 100%;
+  aspect-ratio: 3/4;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.media-item .placeholder-box {
+  min-height: 400px;
+  height: 100%;
+}
+
+/* --- 챕터 이미지 갤러리 (수평 스크롤) --- */
+.chapter-image-gallery-wrapper {
+  position: relative;
+  width: 100%;
+  height: 80vh;
+  min-height: 700px;
+  overflow: hidden;
+  margin-top: 0;
+}
+
+.chapter-image-gallery {
+  display: flex;
+  gap: 3rem;
+  height: 100%;
+  width: fit-content;
+  padding-right: 5%;
+  align-items: flex-start;
+  will-change: transform;
+}
+
+.gallery-image-item {
+  flex: 0 0 auto;
+  width: 500px;
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gallery-image-item:hover {
+  box-shadow: 0 15px 60px rgba(0, 90, 156, 0.4);
+}
+
+.gallery-image-item .placeholder-box {
+  width: 100%;
+  height: 100%;
+  min-height: 600px;
+  border-radius: 12px;
+}
+
+/* 위아래로 크기가 다른 배치 */
+.gallery-image-item.item-1 {
+  margin-top: 0;
+  height: 650px;
+}
+
+.gallery-image-item.item-2 {
+  margin-top: 80px;
+  height: 580px;
+}
+
+.gallery-image-item.item-3 {
+  margin-top: 40px;
+  height: 620px;
+}
+
+.gallery-image-item.item-4 {
+  margin-top: 120px;
+  height: 550px;
+}
+
+.gallery-image-item.item-5 {
+  margin-top: 20px;
+  height: 640px;
+}
+
+.gallery-image-item.item-6 {
+  margin-top: 60px;
+  height: 600px;
+}
+
+
+/* --- Footer --- */
+.footer-section {
+  padding: 6rem 5%;
+  background: rgba(17, 17, 18, 0.95);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  margin-top: 4rem;
+}
+
+.footer-content {
+  max-width: 1400px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.footer-brand {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--accent-gold);
+  letter-spacing: 4px;
+  margin-bottom: 2rem;
+  text-transform: uppercase;
+}
+
+.footer-social {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.footer-social-link {
+  color: var(--text-color);
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: color 0.3s ease;
+}
+
+.footer-social-link:hover {
+  color: var(--accent-gold);
+}
+
+.footer-copyright {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.85rem;
+  margin-top: 2rem;
+}
+
+/* --- 반응형 디자인 --- */
+@media (max-width: 1024px) {
+  .chapter-content {
+    grid-template-columns: 1fr;
+  }
+
+  .chapter-content.reverse .chapter-image-placeholder {
+    order: 0;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .chapter-title {
+    font-size: 2.5rem;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .achievements-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .gallery-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .media-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* --- 배경 지형도 비디오 스타일 --- */
+.hero-bg-video-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* 메인 비디오보다 뒤에 위치 */
+  overflow: hidden;
+}
+
+.hero-bg-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.6; /* 은은하게 보이도록 투명도 조절 */
+}
+
+.hero-bg-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* 다저스 블루 틴트 그라데이션 */
+  background: linear-gradient(to bottom, rgba(0, 90, 156, 0.4), rgba(0, 0, 0, 0.9));
+  mix-blend-mode: hard-light; /* 영상과 색상을 강하게 혼합 */
+  pointer-events: none;
+}
+
+/* --- Dual Wielder Section (Split View) --- */
+.dual-wielder-section {
+  padding: 0; /* Remove default padding */
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+  isolation: isolate;
+}
+
+.split-pane {
+  flex: 1 1 50%;
+  flex-basis: 50%;
+  height: 100%;
+  position: relative;
+  transition: flex-basis 0.6s cubic-bezier(0.25, 1, 0.5, 1),
+    flex-grow 0.6s cubic-bezier(0.25, 1, 0.5, 1),
+    filter 0.4s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  cursor: pointer;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: inset 0 0 80px rgba(0, 0, 0, 0.45);
+  will-change: flex-basis, flex-grow;
+}
+
+.split-pane.is-active {
+  flex-basis: 65%;
+  flex-grow: 1.4;
+  filter: brightness(1.1);
+}
+
+.split-pane.is-inactive {
+  flex-basis: 35%;
+  flex-grow: 0.6;
+  filter: grayscale(0.2) brightness(0.85);
+}
+
+/* Backgrounds with Backdrop Filter */
+.split-pane.pitcher {
+  background-image: url('image/laa1.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+.split-pane.hitter {
+  background-image: url('image/laa2.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+.split-pane::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(5, 15, 35, 0.55);
+  backdrop-filter: blur(10px);
+  z-index: -1;
+  transition: background 0.5s ease, backdrop-filter 0.5s ease;
+}
+
+.split-pane.is-active::before {
+  background: rgba(7, 26, 56, 0.35);
+  backdrop-filter: blur(4px);
+}
+
+.split-pane:focus-visible {
+  outline: 2px solid var(--accent-gold);
+  outline-offset: -4px;
+}
+
+/* --- Gallery Image Styles --- */
+.gallery-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.gallery-item:hover .gallery-img,
+.media-item:hover .gallery-img,
+.gallery-image-item:hover .gallery-img {
+  transform: scale(1.1);
+}
+
+.split-content {
+  text-align: center;
+  z-index: 2;
+  opacity: 0.85;
+  transition: opacity 0.3s ease, transform 0.5s ease;
+  padding: 2rem;
+  width: 100%;
+}
+
+.split-pane.is-active .split-content {
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+.split-title {
+  font-size: 4rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  margin-bottom: 2rem;
+  color: #ffffff;
+  text-shadow: 0 4px 10px rgba(0,0,0,0.5);
+}
+
+.split-stats {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.split-stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.split-stat-item .stat-label {
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.7);
+  margin-bottom: 0.5rem;
+}
+
+.split-stat-item .stat-value {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--accent-gold);
+}
+
+.split-desc {
+  font-size: 1.2rem;
+  color: rgba(255,255,255,0.9);
+  font-weight: 300;
+  letter-spacing: 1px;
+  margin-top: 1rem;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.4s ease 0.1s;
+}
+
+.split-pane.is-active .split-desc {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .dual-wielder-section {
+    flex-direction: column;
+  }
+  
+  .split-pane {
+    width: 100%;
+    flex: 1 1 auto;
+    flex-basis: auto;
+  }
+  
+  .split-pane.is-active,
+  .split-pane.is-inactive {
+    flex-basis: auto;
+    flex-grow: 1;
+    filter: none;
+  }
+  
+  .split-title {
+    font-size: 2.5rem;
+  }
+  
+  .split-stats {
+    gap: 1.5rem;
+  }
+  
+  .split-stat-item .stat-value {
+    font-size: 2rem;
+  }
+}
