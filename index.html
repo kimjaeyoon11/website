@@ -1,490 +1,430 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SHOHEI OHTANI - The Two-Way Star</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+  href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@100;300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+  rel="stylesheet"
+/>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollToPlugin.min.js"></script>
     
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;600;800;900&display=swap" rel="stylesheet">
-    
-    <!-- GSAP & ScrollTrigger -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    
-    <!-- Lenis (Smooth Scroll) -->
-    <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.29/bundled/lenis.min.js"></script>
-    
-    <!-- Vanilla Tilt -->
+    <script src="https://unpkg.com/lenis@1.3.15/dist/lenis.min.js"></script>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
-    
-    <!-- ImageTracer.js (SVG 변환용) -->
+
     <script src="https://cdn.jsdelivr.net/npm/imagetracerjs@1.2.6/imagetracer_v1.2.6.min.js"></script>
 
-    <link rel="stylesheet" href="style.css">
-</head>
+    <link href='https://cdn.boxicons.com/3.0.3/fonts/basic/boxicons.min.css' rel='stylesheet'>
+    <link href='https://cdn.boxicons.com/3.0.3/fonts/brands/boxicons-brands.min.css' rel='stylesheet'>
 
-<body>
-    <!-- Navigation -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <div class="global-bg-video-container">
+      <video autoplay loop muted playsinline class="global-bg-video">
+        <source
+          src="image/white-on-black-topographical-map-clean.mp4"
+          type="video/mp4"
+        />
+      </video>
+      <div class="global-bg-overlay"></div>
+    </div>
+
     <nav class="nav">
-        <div class="nav-inner">
-            <a href="#" class="nav-name-link">
-                <div class="nav-name">
-                    <span class="nav-name-first">SHOHEI</span>
-                    <span class="nav-name-last">OHTANI</span>
-                </div>
-            </a>
-            
-            <a href="#" class="nav-logo-link">
-                <img src="image/logo2.png" alt="LA Dodgers Logo" class="nav-logo-main">
-            </a>
+      <div class="nav-inner">
+        <a href="#" class="nav-name-link">
+          <div class="nav-name">
+            <span class="nav-name-first">SHOHEI</span>
+            <span class="nav-name-last">OHTANI</span>
+          </div>
+        </a>
 
-            <div class="nav-menu-box">
-                <button class="nav-ham" aria-label="Menu" aria-expanded="false">
-                    <div class="nav-ham-line nav-ham-line-top"></div>
-                    <div class="nav-ham-line nav-ham-line-mid"></div>
-                    <div class="nav-ham-line nav-ham-line-bot"></div>
-                </button>
-            </div>
+        <a href="#" class="nav-logo-link">
+          <img
+            src="image/logo2.png"
+            alt="LA Dodgers Logo"
+            class="nav-logo-main"
+          />
+        </a>
+
+        <div class="nav-menu-box">
+          <button class="nav-ham" aria-label="Menu" aria-expanded="false">
+            <div class="nav-ham-line nav-ham-line-top"></div>
+            <div class="nav-ham-line nav-ham-line-mid"></div>
+            <div class="nav-ham-line nav-ham-line-bot"></div>
+          </button>
         </div>
+      </div>
     </nav>
 
-    <!-- Fullscreen Menu Overlay -->
     <div class="nav-menu-w">
-        <div class="nav-menu-bg"></div>
-        <div class="nav-menu-inner">
-            <div class="nav-menu-content">
-                <div class="nav-menu-links-w">
-                    <a href="#chapter-1" class="nav-menu-link-w" data-chapter="1">
-                        <span class="nav-menu-link-text">THE BEGINNING</span>
-                    </a>
-                    <a href="#dual-wielder" class="nav-menu-link-w" data-chapter="2">
-                        <span class="nav-menu-link-text">THE PITCHER</span>
-                    </a>
-                    <a href="#dual-wielder" class="nav-menu-link-w" data-chapter="2">
-                        <span class="nav-menu-link-text">THE HITTER</span>
-                    </a>
-                    <a href="#chapter-4" class="nav-menu-link-w" data-chapter="4">
-                        <span class="nav-menu-link-text">AWARDS</span>
-                    </a>
-                    <a href="#chapter-5" class="nav-menu-link-w" data-chapter="5">
-                        <span class="nav-menu-link-text">MEDIA</span>
-                    </a>
-                </div>
+      <div class="nav-menu-bg"></div>
+      <div class="nav-menu-inner">
+        <div class="nav-menu-content">
+          
+          <div class="nav-menu-left">
+            <div class="nav-menu-visual">
+              <img src="image/lad1.jpg" alt="Shohei Ohtani" class="nav-visual-img">
+              <div class="nav-visual-overlay"></div>
+              <div class="nav-visual-text">
+                <span>SHO-TIME</span>
+                <span>LEGEND</span>
+              </div>
             </div>
+          </div>
+
+          <div class="nav-menu-right">
+            <div class="nav-menu-links-w">
+              
+              <a href="#" class="nav-menu-link-w" data-chapter="home">
+                <span class="nav-menu-link-text" data-text="HOME">HOME</span>
+              </a>
+              
+              <a href="#chapter-1" class="nav-menu-link-w" data-chapter="1">
+                <span class="nav-menu-link-text" data-text="THE BEGINNING">THE BEGINNING</span>
+              </a>
+              
+              <a href="#chapter-2" class="nav-menu-link-w" data-chapter="2">
+                <span class="nav-menu-link-text" data-text="TWO-WAY STAR">TWO-WAY STAR</span>
+              </a>
+              
+              <a href="#chapter-3" class="nav-menu-link-w" data-chapter="3">
+                <span class="nav-menu-link-text" data-text="LEGEND">LEGEND</span>
+              </a>
+              
+              <a href="#chapter-4" class="nav-menu-link-w" data-chapter="4">
+                <span class="nav-menu-link-text" data-text="MEDIA">MEDIA</span>
+              </a>
+
+              <div class="nav-menu-social">
+                <a href="#" class="nav-menu-social-link">
+                  <i class='bx bxl-instagram'></i>
+                  <span>INSTAGRAM</span>
+                </a>
+              </div>
+
+            </div>
+          </div>
+
         </div>
+      </div>
     </div>
 
-    <!-- Chapter Navigation (Right Side) -->
-    <div class="nav-chapter">
-        <a href="#chapter-1" class="nav-chapter-link" data-chapter="1">01</a>
-        <a href="#dual-wielder" class="nav-chapter-link" data-chapter="2">02</a>
-        <a href="#dual-wielder" class="nav-chapter-link" data-chapter="2">03</a>
-        <a href="#chapter-4" class="nav-chapter-link" data-chapter="4">04</a>
-        <a href="#chapter-5" class="nav-chapter-link" data-chapter="5">05</a>
-    </div>
-
-    <!-- Hero Section -->
     <section class="hero-section">
-        <!-- 배경 지형도 비디오 (가장 뒤) -->
-        <div class="hero-bg-video-container">
-            <video autoplay loop muted playsinline class="hero-bg-video">
-                <source src="image/white-on-black-topographical-map-clean.mp4" type="video/mp4">
-            </video>
-            <div class="hero-bg-overlay"></div>
+      <div class="hero-background">
+        <video class="hero-video" autoplay muted loop playsinline>
+          <source src="image/ohtani main.mp4" type="video/mp4" />
+        </video>
+        <div class="hero-overlay"></div>
+        <div class="hero-image-placeholder"></div>
+      </div>
+
+      <div class="hero-content">
+        <div class="hero-text-overlay">
+          <h1 class="hero-title">大谷翔平</h1>
         </div>
 
-        <div class="hero-background">
-            <video class="hero-video" autoplay muted loop playsinline>
-                <source src="image/ohtani main.mp4" type="video/mp4">
-            </video>
-            <div class="hero-overlay"></div>
-            <div class="hero-image-placeholder"></div>
+        <div class="hero-signature-wrapper">
+          <img
+            src="image/sain.png"
+            alt="Shohei Ohtani Signature"
+            class="hero-signature-img"
+          />
         </div>
-        
-        <div class="hero-content">
-            <div class="hero-text-overlay">
-                <h1 class="hero-title">TWO WAY STAR</h1>
-            </div>
-            
-            <div class="hero-signature-wrapper">
-                <svg class="hero-signature-svg" viewBox="0 0 800 400"></svg>
-                <img src="image/sain.png" alt="Shohei Ohtani Signature" class="hero-signature-img-source" style="display: none;">
-            </div>
+      </div>
+
+      <div class="scroll-indicator">
+        <div class="mouse">
+          <div class="wheel"></div>
         </div>
-        
-        <div class="scroll-indicator">
-            <div class="mouse">
-                <div class="wheel"></div>
-            </div>
-            <div class="arrow">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
+        <div class="arrow">
+          <span></span>
+          <span></span>
+          <span></span>
         </div>
+        <span class="hero-scroll-indicator">SCROLL</span>
+      </div>
     </section>
 
-    <!-- Chapter 1: The Beginning -->
-    <section class="chapter-section" id="chapter-1" data-chapter="1">
+    <section class="quote-section fade-in-section">
+      <div class="quote-container container">
+        <div class="quote-text">
+          <span class="quote-line">THE ONLY PERSON</span>
+          <span class="quote-line"
+            >I'M <span class="highlight">COMPETING</span></span
+          >
+          <span class="quote-line"
+            >AGAINST IS <span class="highlight">MYSELF</span></span
+          >
+        </div>
+        <div class="quote-author">- SHOHEI OHTANI -</div>
+      </div>
+    </section>
+
+    <section
+      class="chapter-section"
+      id="chapter-1"
+      data-chapter="1"
+    >
+      <div class="chapter-image-gallery-wrapper full-width-wrapper">
+        <div class="chapter-image-gallery">
+          
+          <div class="gallery-image-item pos-top">
+            <div class="gallery-img-box">
+              <img src="image/young.jpg" alt="Ohtani Young" class="gallery-img" />
+              <span class="gallery-text4">THE BEGINNING</span>
+              <span class="gallery-text3">오타니 쇼헤이는 1994년 7월 5일 일본 이와테현 미즈사와(현재 오슈의 일부)에서 
+                카요코와 오타니 토루 사이에서 태어났습니다.<br> 그의 어머니 카요코는 고등학교 시절 국가대표 배드민턴 선수였고, 
+                지역 자동차 제조 공장에서 일하던 아버지 토루는 일본 산업 리그에서 활약한 아마추어 야구 선수였습니다.</span>
+            </div>
+          </div>
+
+          <div class="gallery-image-item pos-center">
+            <div class="gallery-img-box">
+              <img src="image/mandara.webp" alt="mandara" class="gallery-img" />
+              <span class="gallery-text">MANDARA</span>
+              <span class="gallery-text2">고교시절 오타니의 최종목표는 일본 프로야구 8개의 구단에서 드래프트 1순위로 지명받는 것이었습니다.<br>
+                이를 위해서 몸만들기, 멘탈, 제구, 구위, 변화구, 스피드, 멘탈, 안정성, 운 8가지의 목표를 세웠습니다.
+              </span>
+            </div>
+          </div>
+
+          <div class="gallery-image-item pos-center">
+            <div class="gallery-img-box">
+              <img src="image/high 1.jpg" alt="Ohtani High School" class="gallery-img" />
+              <span class="gallery-text4">HANAMAKI HIGASHI</span>
+              <span class="gallery-text3">하계 도내대회 준결승전에선 아마추어 야구 사상 최초 160km/h를 던져버리면서 세간의 이목을 끌었다.<br>
+                솔직히 투수 성적은 좋지 못한 편이였지만 잠재력이 매우 뛰어난 선수로 평가받고 있었고 타자로써는 고교야구 최강의 타자라고 불릴 정도였다.<br>
+                감독의 평가는 '이 녀석은 일본의 보물이 될 것'이라고 평가했다.
+              </span>
+            </div>
+          </div>
+
+          <div class="gallery-image-item pos-center">
+            <div class="gallery-img-box">
+              <img src="image/fighters1.webp" alt="Ohtani Fighters 1" class="gallery-img" />
+              <span class="gallery-text">NPB DEBUT</span>
+              <span class="gallery-text2">160km/h를 던지는 재능은 인정받았으나, 투타 겸업(이도류)에 대해서는 
+                "프로 레벨에서는 불가능하다",<br> "하나에 집중하지 않으면 둘 다 실패할 것"이라는 회의적인 시선이 지배적이었습니다.
+              </span>
+            </div>
+          </div>
+
+          <div class="gallery-image-item pos-top">
+            <div class="gallery-img-box">
+              <img src="image/fighters2.jpg" alt="Ohtani Fighters 2" class="gallery-img" />
+              <span class="gallery-text4">THE ACE</span>
+              <span class="gallery-text3">2016년 소속팀 우승과 MVP를 석권하며 이도류가 프로에서도 통함을 증명했습니다.<br>
+                일본 내에서는 이미 '규격 외 선수'로 분류되기 시작했습니다.
+              </span>
+            </div>
+          </div>
+
+          <div class="gallery-image-item pos-center">
+            <div class="gallery-img-box">
+              <img src="image/jp5.webp" alt="jp1" class="gallery-img" />
+              <span class="gallery-text">WBSC PREMIER 12</span>
+              <span class="gallery-text2">제1회 WBSC 프리미어12 토너먼트에서 오타니는 일본 국가대표팀과 함께 동메달을 획득했습니다.<br>
+                  그는 일본 투수진의 에이스였으며, 마에다 켄타도 출전했습니다.<br>
+                  오타니는 사무라이 재팬에서 일본의 숙적인 한국을 상대로 두 번의 투수전에 출전하여 개막전 1차전에서 승리하고 준결승에서
+                    노디시전을 치렀습니다.<br> 이후 오타니는 프리미어12 올 월드 팀에 선정되었고,
+                  2015 세계야구소프트볼연맹 올해의 야구 선수로 선정되었습니다.</span>
+            </div>
+          </div>
+
+          <div class="gallery-image-item pos-center">
+            <div class="gallery-img-box">
+              <img src="image/laa4.jpg" alt="laa" class="gallery-img" />
+              <span class="gallery-text">LAA</span>
+              <span class="gallery-text2">데뷔 첫해 신인왕을 수상하며 센세이션을 일으켰으나, <br>
+                팔꿈치 수술(토미 존)과 부상으로 타자에만 전념하거나 성적이 저조할 땐 <br>
+                "역시 메이저리그에서 이도류는 무리인가"라는 내구성 논란이 있었습니다.<br>
+                하지만 만장일치 MVP 2회 수상. 베이브 루스 이후가 아닌, 
+                '베이브 루스를 넘어선 선수'라는 평가를 받았습니다. 비교 대상이 없는 유일무이한 존재로 정의되었습니다.</span>
+            </div>
+          </div>
+
+          <div class="gallery-image-item pos-top">
+            <div class="gallery-img-box">
+              <img src="image/jp3.jpg" alt="jp2" class="gallery-img" />
+              <span class="gallery-text">SAMURAI JAPAN</span>
+              <span class="gallery-text2">오타니는 일본이 세 번째 WBC 타이틀을 획득하는 데 기여한 후, <br>
+                2023년 팀에 DH와 투수로 각각 지명된 후 두 개의 포지션에서 올-WBC 팀에 이름을 올린 최초의 선수가 되었습니다.</span>
+            </div>
+          </div>
+
+          <div class="gallery-image-item pos-center">
+            <div class="gallery-img-box">
+              <img src="image/lad4.jpg" alt="lad4" class="gallery-img" />
+              <span class="gallery-text4">GOAT</span>
+              <span class="gallery-text3">투수 복귀와 함께 다시 완벽한 이도류로 돌아왔으며, 이제는 단순한 스타를 넘어<br>
+                  야구 역사상 가장 위대한 선수(The Greatest of All Time)로 평가받고 있습니다.</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="dual-wielder-section" id="chapter-2" data-chapter="2">
+      <div class="dual-side pitcher-side">
+        <h2 class="bg-text text-left">PITCHER</h2>
+        
+        <div class="stats-box pitcher-stats">
+          <h3>PITCHING RECORDS</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>YEAR</th>
+                <th>IP</th>
+                <th>ERA</th>
+                <th>W</th>
+                <th>SO</th>
+              </tr>
+            </thead>
+            <tbody id="pitcher-data-body"></tbody>
+          </table>
+        </div>
+
+        <img src="image/left.png" alt="Ohtani Pitcher" class="dual-character-img" />
+      </div>
+
+      <div class="dual-center-content">
+        <h2 class="dual-main-title">Two-Way</h2>
+        <div class="dual-buttons">
+          <button class="dual-nav-btn pitcher-btn">
+            <span class="btn-placeholder"><i class='bx bx-chevron-left'></i></span>
+          </button>
+          <button class="dual-nav-btn hitter-btn">
+            <span class="btn-placeholder"><i class='bx bx-chevron-right'></i></span>
+          </button>
+        </div>
+      </div>
+
+      <div class="dual-side hitter-side">
+        <h2 class="bg-text text-right">HITTER</h2>
+        
+        <div class="stats-box hitter-stats">
+          <h3>BATTING RECORDS</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>YEAR</th>
+                <th>AVG</th>
+                <th>HR</th>
+                <th>RBI</th>
+                <th>SB</th>
+                <th>OPS</th>
+              </tr>
+            </thead>
+            <tbody id="hitter-data-body"></tbody>
+          </table>
+        </div>
+
+        <img src="image/right.png" alt="Ohtani Hitter" class="dual-character-img" />
+      </div>
+    </section>
+
+    <section class="ending-section" id="chapter-3" data-chapter="4">
+      <div class="ending-background"></div>
+      <div class="ending-overlay"></div>
+      
+      <div class="zoom-items-container">
+        <div class="zoom-item zoom-item-1">
+          <img src="image/lad1.jpg" alt="Ohtani Dodgers 1" class="zoom-img">
+        </div>
+        <div class="zoom-item zoom-item-2">
+          <img src="image/lad2.jpg" alt="Ohtani Dodgers 2" class="zoom-img">
+        </div>
+        <div class="zoom-item zoom-item-3">
+          <img src="image/lad3.jpg" alt="Ohtani Dodgers 3" class="zoom-img">
+        </div>
+        <div class="zoom-item zoom-item-4">
+          <img src="image/5050.webp" alt="50-50 Achievement" class="zoom-img">
+        </div>
+        <div class="zoom-item zoom-item-5">
+          <img src="image/boss.jpg" alt="Ohtani Boss" class="zoom-img">
+        </div>
+        <div class="zoom-item zoom-item-6">
+          <img src="image/jp6.jpg" alt="Ohtani Japan" class="zoom-img">
+        </div>
+      </div>
+      
+      <div class="ending-final-text">
+        <h1 class="ending-title">ALL TIME</h1>
+        <h1 class="ending-title">LEGEND</h1>
+      </div>
+    </section>
+
+    <section
+      class="chapter-section fade-in-section"
+      id="chapter-4"
+      data-chapter="4"
+    >
+      <div class="container">
         <div class="chapter-header">
-            <div class="chapter-number">01</div>
-            <h1 class="chapter-title">THE BEGINNING</h1>
-        </div>
-        
-        <div class="chapter-content">
-            <!-- 가로 스크롤 이미지 갤러리 -->
-            <div class="chapter-image-gallery-wrapper">
-                <div class="chapter-image-gallery">
-                    <div class="gallery-image-item item-1">
-                        <img src="image/young.jpg" alt="Ohtani Young" class="gallery-img">
-                    </div>
-                    <div class="gallery-image-item item-2">
-                        <img src="image/high 1.jpg" alt="Ohtani High School" class="gallery-img">
-                    </div>
-                    <div class="gallery-image-item item-3">
-                        <img src="image/fighters1.webp" alt="Ohtani Fighters 1" class="gallery-img">
-                    </div>
-                    <div class="gallery-image-item item-4">
-                        <img src="image/fighters2.jpg" alt="Ohtani Fighters 2" class="gallery-img">
-                    </div>
-                    <div class="gallery-image-item item-5">
-                        <img src="image/jp2.jpg" alt="Ohtani Japan 1" class="gallery-img">
-                    </div>
-                    <div class="gallery-image-item item-6">
-                        <img src="image/jp3.jpg" alt="Ohtani Japan 2" class="gallery-img">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Chapter 2 & 3: Two-Way Star (Split View) -->
-    <section class="chapter-section dual-wielder-section" id="dual-wielder" data-chapter="2">
-        <div class="split-pane pitcher" tabindex="0" aria-label="Shohei Ohtani Pitching Highlights">
-            <div class="split-content">
-                <h2 class="split-title">PITCHER</h2>
-                <div class="split-stats">
-                    <div class="split-stat-item">
-                        <span class="stat-label">ERA</span>
-                        <span class="stat-value">3.01</span>
-                    </div>
-                    <div class="split-stat-item">
-                        <span class="stat-label">K/9</span>
-                        <span class="stat-value">11.4</span>
-                    </div>
-                </div>
-                <div class="split-desc">
-                    Triple-digit heater, wipeout splitter, fearless focus.
-                </div>
-            </div>
-        </div>
-        
-        <div class="split-pane hitter" tabindex="0" aria-label="Shohei Ohtani Hitting Highlights">
-            <div class="split-content">
-                <h2 class="split-title">HITTER</h2>
-                <div class="split-stats">
-                    <div class="split-stat-item">
-                        <span class="stat-label">HR</span>
-                        <span class="stat-value">54</span>
-                    </div>
-                    <div class="split-stat-item">
-                        <span class="stat-label">OPS</span>
-                        <span class="stat-value">1.066</span>
-                    </div>
-                </div>
-                <div class="split-desc">
-                    Towering power, elite discipline, game-breaking speed.
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Chapter 4: Awards & Achievements -->
-    <section class="chapter-section" id="chapter-4" data-chapter="4">
-        <div class="chapter-header">
-            <div class="chapter-number">04</div>
-            <h1 class="chapter-title">AWARDS & ACHIEVEMENTS</h1>
-        </div>
-        
-        <div class="achievements-grid">
-            <div class="achievement-item">
-                <div class="achievement-year">2024</div>
-                <div class="achievement-title">World Series Champion</div>
-                <div class="achievement-desc">First World Series Title with Dodgers</div>
-            </div>
-            <div class="achievement-item">
-                <div class="achievement-year">2024</div>
-                <div class="achievement-title">50-50 Club</div>
-                <div class="achievement-desc">First Player in MLB History (54 HR, 59 SB)</div>
-            </div>
-            <div class="achievement-item">
-                <div class="achievement-year">2023</div>
-                <div class="achievement-title">AL MVP</div>
-                <div class="achievement-desc">American League Most Valuable Player</div>
-            </div>
-            <div class="achievement-item">
-                <div class="achievement-year">2021</div>
-                <div class="achievement-title">AL MVP</div>
-                <div class="achievement-desc">American League Most Valuable Player</div>
-            </div>
+          <div class="chapter-number">05</div>
+          <h1 class="chapter-title">MEDIA</h1>
         </div>
 
-        <!-- 이미지 갤러리 -->
-        <div class="gallery-section">
-            <div class="gallery-grid">
-                <div class="gallery-item">
-                    <img src="image/laa3.jpg" alt="Award Photo 1" class="gallery-img">
-                </div>
-                <div class="gallery-item">
-                    <img src="image/laa4.jpg" alt="Award Photo 2" class="gallery-img">
-                </div>
-                <div class="gallery-item">
-                    <img src="image/laa5.jpg" alt="Award Photo 3" class="gallery-img">
-                </div>
-                <div class="gallery-item">
-                    <img src="image/jp4.jpg" alt="Award Photo 4" class="gallery-img">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Chapter 5: Media -->
-    <section class="chapter-section" id="chapter-5" data-chapter="5">
-        <div class="chapter-header">
-            <div class="chapter-number">05</div>
-            <h1 class="chapter-title">MEDIA</h1>
-        </div>
-        
         <div class="media-section">
-            <div class="media-grid">
-                <div class="media-item">
-                    <img src="image/comon.jpg" alt="Media Photo 1" class="gallery-img">
-                </div>
-                <div class="media-item">
-                    <img src="image/comon2.jpg" alt="Media Photo 2" class="gallery-img">
-                </div>
-                <div class="media-item">
-                    <img src="image/comon3.jpg" alt="Media Photo 3" class="gallery-img">
-                </div>
+          <div class="media-grid">
+            <div class="media-item">
+              <img
+                src="image/comon.jpg"
+                alt="Media Photo 1"
+                class="gallery-img"
+              />
             </div>
+            <div class="media-item">
+              <img
+                src="image/comon2.jpg"
+                alt="Media Photo 2"
+                class="gallery-img"
+              />
+            </div>
+            <div class="media-item">
+              <img
+                src="image/comon3.jpg"
+                alt="Media Photo 3"
+                class="gallery-img"
+              />
+            </div>
+          </div>
         </div>
+      </div>
     </section>
 
-    <!-- Footer -->
     <footer class="footer-section">
-        <div class="footer-content">
-            <div class="footer-brand">OHTANI</div>
-            <div class="footer-social">
-                <a href="#" class="footer-social-link">Instagram</a>
-                <a href="#" class="footer-social-link">Twitter</a>
-                <a href="#" class="footer-social-link">Facebook</a>
-            </div>
-    <section class="hero-section">
-        <!-- 배경 지형도 비디오 (가장 뒤) -->
-        <div class="hero-bg-video-container">
-            <video autoplay loop muted playsinline class="hero-bg-video">
-                <source src="image/white-on-black-topographical-map-clean.mp4" type="video/mp4">
-            </video>
-            <div class="hero-bg-overlay"></div>
+      <div class="footer-content">
+        <div class="footer-brand">OHTANI</div>
+        <div class="footer-social">
+          <a href="#" class="footer-social-link">Instagram</a>
+          <a href="#" class="footer-social-link">Twitter</a>
+          <a href="#" class="footer-social-link">Facebook</a>
         </div>
-
-        <div class="hero-background">
-            <video class="hero-video" autoplay muted loop playsinline>
-                <source src="image/ohtani main.mp4" type="video/mp4">
-            </video>
-            <div class="hero-overlay"></div>
-            <div class="hero-image-placeholder"></div>
+        <div class="footer-copyright">
+          © 2025 Shohei Ohtani. All rights reserved
         </div>
-        
-        <div class="hero-content">
-            <div class="hero-text-overlay">
-                <h1 class="hero-title">TWO WAY STAR</h1>
-            </div>
-            
-            <div class="hero-signature-wrapper">
-                <svg class="hero-signature-svg" viewBox="0 0 800 400"></svg>
-                <img src="image/sain.png" alt="Shohei Ohtani Signature" class="hero-signature-img-source" style="display: none;">
-            </div>
-        </div>
-        
-        <div class="scroll-indicator">
-            <div class="mouse">
-                <div class="wheel"></div>
-            </div>
-            <div class="arrow">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-        </div>
-    </section>
-
-    <!-- Chapter 1: The Beginning -->
-    <section class="chapter-section" id="chapter-1" data-chapter="1">
-        <div class="chapter-header">
-            <div class="chapter-number">01</div>
-            <h1 class="chapter-title">THE BEGINNING</h1>
-        </div>
-        
-        <div class="chapter-content">
-            <!-- 가로 스크롤 이미지 갤러리 -->
-            <div class="chapter-image-gallery-wrapper">
-                <div class="chapter-image-gallery">
-                    <div class="gallery-image-item item-1">
-                        <img src="image/young.jpg" alt="Ohtani Young" class="gallery-img">
-                    </div>
-                    <div class="gallery-image-item item-2">
-                        <img src="image/high 1.jpg" alt="Ohtani High School" class="gallery-img">
-                    </div>
-                    <div class="gallery-image-item item-3">
-                        <img src="image/fighters1.webp" alt="Ohtani Fighters 1" class="gallery-img">
-                    </div>
-                    <div class="gallery-image-item item-4">
-                        <img src="image/fighters2.jpg" alt="Ohtani Fighters 2" class="gallery-img">
-                    </div>
-                    <div class="gallery-image-item item-5">
-                        <img src="image/jp2.jpg" alt="Ohtani Japan 1" class="gallery-img">
-                    </div>
-                    <div class="gallery-image-item item-6">
-                        <img src="image/jp3.jpg" alt="Ohtani Japan 2" class="gallery-img">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Chapter 2 & 3: Two-Way Star (Split View) -->
-    <section class="chapter-section dual-wielder-section" id="dual-wielder" data-chapter="2">
-        <div class="split-pane pitcher" tabindex="0" aria-label="Shohei Ohtani Pitching Highlights">
-            <div class="split-content">
-                <h2 class="split-title">PITCHER</h2>
-                <div class="split-stats">
-                    <div class="split-stat-item">
-                        <span class="stat-label">ERA</span>
-                        <span class="stat-value">3.01</span>
-                    </div>
-                    <div class="split-stat-item">
-                        <span class="stat-label">K/9</span>
-                        <span class="stat-value">11.4</span>
-                    </div>
-                </div>
-                <div class="split-desc">
-                    Triple-digit heater, wipeout splitter, fearless focus.
-                </div>
-            </div>
-        </div>
-        
-        <div class="split-pane hitter" tabindex="0" aria-label="Shohei Ohtani Hitting Highlights">
-            <div class="split-content">
-                <h2 class="split-title">HITTER</h2>
-                <div class="split-stats">
-                    <div class="split-stat-item">
-                        <span class="stat-label">HR</span>
-                        <span class="stat-value">54</span>
-                    </div>
-                    <div class="split-stat-item">
-                        <span class="stat-label">OPS</span>
-                        <span class="stat-value">1.066</span>
-                    </div>
-                </div>
-                <div class="split-desc">
-                    Towering power, elite discipline, game-breaking speed.
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Chapter 4: Awards & Achievements -->
-    <section class="chapter-section" id="chapter-4" data-chapter="4">
-        <div class="chapter-header">
-            <div class="chapter-number">04</div>
-            <h1 class="chapter-title">AWARDS & ACHIEVEMENTS</h1>
-        </div>
-        
-        <div class="achievements-grid">
-            <div class="achievement-item">
-                <div class="achievement-year">2024</div>
-                <div class="achievement-title">World Series Champion</div>
-                <div class="achievement-desc">First World Series Title with Dodgers</div>
-            </div>
-            <div class="achievement-item">
-                <div class="achievement-year">2024</div>
-                <div class="achievement-title">50-50 Club</div>
-                <div class="achievement-desc">First Player in MLB History (54 HR, 59 SB)</div>
-            </div>
-            <div class="achievement-item">
-                <div class="achievement-year">2023</div>
-                <div class="achievement-title">AL MVP</div>
-                <div class="achievement-desc">American League Most Valuable Player</div>
-            </div>
-            <div class="achievement-item">
-                <div class="achievement-year">2021</div>
-                <div class="achievement-title">AL MVP</div>
-                <div class="achievement-desc">American League Most Valuable Player</div>
-            </div>
-        </div>
-
-        <!-- 이미지 갤러리 -->
-        <div class="gallery-section">
-            <div class="gallery-grid">
-                <div class="gallery-item">
-                    <img src="image/laa3.jpg" alt="Award Photo 1" class="gallery-img">
-                </div>
-                <div class="gallery-item">
-                    <img src="image/laa4.jpg" alt="Award Photo 2" class="gallery-img">
-                </div>
-                <div class="gallery-item">
-                    <img src="image/laa5.jpg" alt="Award Photo 3" class="gallery-img">
-                </div>
-                <div class="gallery-item">
-                    <img src="image/jp4.jpg" alt="Award Photo 4" class="gallery-img">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Chapter 5: Media -->
-    <section class="chapter-section" id="chapter-5" data-chapter="5">
-        <div class="chapter-header">
-            <div class="chapter-number">05</div>
-            <h1 class="chapter-title">MEDIA</h1>
-        </div>
-        
-        <div class="media-section">
-            <div class="media-grid">
-                <div class="media-item">
-                    <img src="image/comon.jpg" alt="Media Photo 1" class="gallery-img">
-                </div>
-                <div class="media-item">
-                    <img src="image/comon2.jpg" alt="Media Photo 2" class="gallery-img">
-                </div>
-                <div class="media-item">
-                    <img src="image/comon3.jpg" alt="Media Photo 3" class="gallery-img">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer-section">
-        <div class="footer-content">
-            <div class="footer-brand">OHTANI</div>
-            <div class="footer-social">
-                <a href="#" class="footer-social-link">Instagram</a>
-                <a href="#" class="footer-social-link">Twitter</a>
-                <a href="#" class="footer-social-link">Facebook</a>
-            </div>
-            <div class="footer-copyright">© 2025 Shohei Ohtani. All rights reserved</div>
-        </div>
+      </div>
     </footer>
 
-    <!-- JavaScript 로드 -->
-    <script src="js/horizontal-scroll.js"></script>
+    <script src="util.js"></script>
+    <script src="ui.js"></script>
+    <script src="animations.js"></script>
     <script src="main.js"></script>
-</body>
-
+  </body>
 </html>
